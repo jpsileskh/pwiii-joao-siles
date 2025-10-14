@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 export default function Page() {
   const [count, setCount] = useState(0)
+  const isButtonDisabled = count === 0
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-500 via-pink-500 to-red-500 flex items-center justify-center p-4">
@@ -20,8 +21,9 @@ export default function Page() {
 
         <div className="flex gap-4 justify-center">
           <button
+            disabled={isButtonDisabled}
             onClick={() => setCount(count - 1)}
-            className="bg-red-500 hover:bg-red-600 text-white font-bold py-4 px-8 rounded-xl shadow-lg transition-all duration-200 hover:scale-105 active:scale-95"
+            className="bg-red-500 disabled:bg-red-300 hover:bg-red-600 text-white font-bold py-4 px-8 rounded-xl shadow-lg transition-all duration-200 hover:scale-105 active:scale-95"
           >
             −
           </button>
@@ -31,7 +33,7 @@ export default function Page() {
             className="bg-gray-500 hover:bg-gray-600 text-white font-bold py-4 px-8 rounded-xl shadow-lg transition-all duration-200 hover:scale-105 active:scale-95"
           >
             Reset
-          </button>
+          </button> 
           
           <button
             onClick={() => setCount(count + 1)}
